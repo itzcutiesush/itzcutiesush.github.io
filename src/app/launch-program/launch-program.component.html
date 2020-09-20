@@ -1,0 +1,63 @@
+<div class="container-fluid">
+	<div class="row mx-0">
+		<h3>SpaceX Launch Programs</h3>
+	</div>
+	<div class="row mx-0">
+		<div class="col-12 col-md-3 col-lg-2 filter-view p-2">
+			<h5 class="title">Filters</h5>
+			<div class="filter">
+				<h6 class="filter-title text-center border-bottom pb-2">Launch Year</h6>
+				<div class="row m-0">
+					<div class="col-4 filter-value p-1 my-2" *ngFor="let obj of filterObj['launchYearList'];let idx = index" [ngClass]="{'offset-2': 0 !== idx % 2, 'offset-1': 0 === idx % 2, 'selected': obj['isSelected']}" (click)="setFilterSelection('launchYearList', idx, obj['isSelected'])">
+						{{obj['value']}}
+					</div>
+				</div>
+			</div>
+			<div class="filter mt-3">
+				<h6 class="filter-title text-center border-bottom pb-2">Successful Launch</h6>
+				<div class="row m-0">
+					<div class="col-4 filter-value p-1 my-2" *ngFor="let obj of filterObj['launchStatusList'];let idx = index" [ngClass]="{'offset-2': 0 !== idx % 2, 'offset-1': 0 === idx % 2, 'selected': obj['isSelected']}" (click)="setFilterSelection('launchStatusList', idx, obj['isSelected'])" [attr.id]="'launch-year-'+idx">
+						{{obj['value']}}
+					</div>
+				</div>
+			</div>
+			<div class="filter mt-3">
+				<h6 class="filter-title text-center border-bottom pb-2">Successful Land</h6>
+				<div class="row m-0">
+					<div class="col-4 filter-value p-1 my-2" *ngFor="let obj of filterObj['landStatusList'];let idx = index" [ngClass]="{'offset-2': 0 !== idx % 2, 'offset-1': 0 === idx % 2, 'selected': obj['isSelected']}" (click)="setFilterSelection('landStatusList', idx, obj['isSelected'])">
+						{{obj['value']}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-9 col-lg-10 list-view pr-0">
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-3 mb-3" *ngFor="let obj of dataList">
+					<div class="card">
+						<picture>
+						    <source [attr.srcset]="obj['mission_patch_small']"
+						            media="(max-width: 700px)">
+						    <img [attr.src]="obj['mission_patch']" class="card-img-top" [attr.alt]="'mission image for mission '+ obj['mission_name']" />
+						</picture>
+					  	<div class="card-body pt-0">
+						    <h5 class="card-title">{{obj['mission_name']}} #{{obj['flight_number']}}</h5>
+						    <h6 class="card-subtitle mb-1">Mission Ids:</h6>
+						    <ul class="highlight mb-2 pl-4" *ngFor="let mission of obj['mission_id']">
+						    	<li>{{mission}}</li>
+						    </ul>
+						    <h6 class="card-subtitle">Launch Year: <span class="highlight">{{obj['launch_year']}}</span></h6>
+						    <h6 class="card-subtitle">Successful Launch: <span class="highlight">{{obj['launch_success']}}</span></h6>
+						    <h6 class="card-subtitle">Successful Landing: <span class="highlight">{{obj['launch_landing']}}</span></h6>
+					  	</div>
+					</div>
+				</div>
+				<div class="col-12 highlight text-center mb-5" *ngIf="dataList.length==0">
+					<h5>No Missions found!</h5>
+				</div>
+				<div class="col-6 col-md-12 offset-3 offset-md-0">
+					<h6 class="text-center"><b>Developed by:</b> Sushmita Sahu</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

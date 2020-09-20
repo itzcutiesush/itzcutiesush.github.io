@@ -1,0 +1,110 @@
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 700px,
+  // Large screen / desktop
+  lg: 1024px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 700px,
+  lg: 1000px,
+  xl: 1140px
+);
+
+.container-fluid{
+	.filter-view{
+		background-color: #fff;
+		border-radius: 5px;
+		height: fit-content;
+
+		.title{
+			font-weight: 700;
+		}
+
+		.filter{
+			.filter-title{
+				width: 70%;
+    			margin: auto;
+			}
+
+			.filter-value{
+				background-color: #C4DF9D;
+    			text-align: center;
+    			border-radius: 5px;
+
+    			&:hover{
+    				cursor: pointer;
+    			}
+			}
+
+			.filter-value.selected{
+				background-color : #7CBA01;
+			}
+		}
+	}
+
+	.list-view{
+		.card{
+			height: 100%;
+			border: none;
+		}
+
+		.card-title{
+			color: #414A8E;
+			font-weight: 700;
+		}
+
+		.card-subtitle{
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+		}
+
+		.highlight{
+			color: #63689D;
+		}
+
+		.card-img-top{
+    		padding: 1.25rem;
+		}
+	}
+}
+
+@media(min-width: 700px){
+	.list-view{
+		> .row{
+			margin-left: -7.5px !important;
+    		margin-right: -7.5px !important;
+		}
+
+		.row > [class*='col-']{
+			padding-left: 7.5px;
+			padding-right: 7.5px;
+		}
+	}
+}
+
+@media(max-width: 700px){
+	.filter-view{
+		margin-bottom: 15px;
+	}
+
+	.list-view{
+		padding-left: 0 !important;
+
+		.card{
+			.card-img-top, .card-body{
+	    		padding: 1.5rem;
+			}
+		}
+	}
+}
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";

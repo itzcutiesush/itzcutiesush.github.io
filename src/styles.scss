@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+body {
+    background-color: #F2F2F2;
+    min-height: 100%;
+    position: relative;
+    font-size: 14px;
+}
+
+@media(min-width: 1441px){
+  .container-fluid{
+    max-width: 1440px !important;
+  }
+}
